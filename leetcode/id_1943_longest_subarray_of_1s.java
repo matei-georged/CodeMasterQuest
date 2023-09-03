@@ -24,7 +24,6 @@ class Solution {
             max = Integer.max(max, j - i);
         }
 
-
         return max;
     }
 }
