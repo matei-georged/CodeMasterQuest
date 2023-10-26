@@ -1,7 +1,3 @@
-#include <vector>
-
-using namespace std;
-
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
@@ -12,16 +8,12 @@ public:
         for (int i = 1; i < nums.size(); ++i)
         {
             left_prefix[i] = nums[i] * (left_prefix[i-1] == 0 ? 1 : left_prefix[i-1]);
-            std::cout << left_prefix[i] << " ";
         }
 
-        cout << "\n";
-
-        right_prefix[0] = nums[0];
-        for (int i = 1; i < nums.size(); ++i)
+        right_prefix[nums.size()-1] = nums[nums.size()-1];
+        for (int i = nums.size() - 2; i >= 0; --i)
         {
-            right_prefix[i] = nums[i] * (right_prefix[i-1] == 0 ? 1 : right_prefix[i-1]);
-            std::cout << right_prefix[i] << " ";
+            right_prefix[i] = nums[i] * (right_prefix[i+1] == 0 ? 1 : right_prefix[i+1]);
         }
 
         int res = nums[0];
